@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static BuildManager instance;
+
+    void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("More than one BuildManager in scene!");
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject standardTurretPrefab;
+
+    void Start()
     {
-        
+        turretToBuild = standardTurretPrefab;
+    }
+
+    private GameObject turretToBuild;
+
+
+    public GameObject GetTurretToBuild()
+    {
+        return turretToBuild;
     }
 }

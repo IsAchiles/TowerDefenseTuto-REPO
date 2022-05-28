@@ -6,6 +6,7 @@ public class Node : MonoBehaviour
 {
     //Cor definida dentro do jogo - Cor ao passar o mouse em cima do node
     public Color hoverColor;
+    public Vector3 positionOffset;
 
     private GameObject turret;
 
@@ -33,7 +34,8 @@ public class Node : MonoBehaviour
 
         //Build a turret
 
-
+        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+        turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
 
     }
 
