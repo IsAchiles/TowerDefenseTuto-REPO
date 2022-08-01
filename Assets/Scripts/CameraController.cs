@@ -15,7 +15,6 @@ public class CameraController : MonoBehaviour
     private float minX = 0f;
     private float maxX = 75f;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -49,12 +48,13 @@ public class CameraController : MonoBehaviour
 
         Vector3 pos = transform.position;
 
-        pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
+        pos.y -= scroll * 800 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
 
         transform.position = pos;
+        transform.rotation = Quaternion.Euler(pos.y + 10,0,0);
 
     }
 }
